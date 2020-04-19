@@ -1,13 +1,30 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import PropTypes from 'prop-types'
+import {connect} from "react-redux";
 
 export default (WrappedComponent) => {
     const RequireAuthentication = ({...props}) => {
-        console.log("HOC HOC....")
+        const { history, isLogin} = props;
+
+
+        useEffect(() => {
+            if(isLogin){
+                return history.push("/")
+            }
+
+        }, [isLogin]);
+
+
        return  <WrappedComponent {...props} />
     }
 
     RequireAuthentication.propTypes = {}
 
-    return RequireAuthentication
+    const mapStateToProps = state => {
+        return {
+            isLogin: state.rootAuth.isAuth
+        };
+    }
+
+    return connect(mapStateToProps)(RequireAuthentication);
 }

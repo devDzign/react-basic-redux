@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
-import { authenticationToggle } from "../store/actions/actionTypes"
+import { setAuthentication } from "../store/actions/actions"
 import {Link} from "react-router-dom";
 
 const Header = (props) => {
@@ -36,8 +36,8 @@ const Header = (props) => {
                         </li>
 
                         <li className="nav-item">
-                            <Link className="nav-link" to="/ressources">
-                                Ressources
+                            <Link className="nav-link" to="/resources">
+                                Resources
                             </Link>
                         </li>
 
@@ -55,12 +55,12 @@ const Header = (props) => {
 
 const  mapDispatchToProps = (dispatch) => {
     return {
-        authenticationToggle: (isLogin) => dispatch(authenticationToggle(isLogin)),
+        authenticationToggle: (isLogin) => dispatch(setAuthentication(isLogin)),
     }
 }
 
 const mapStateToProps = (state)=> {
-    console.log(state)
+
     return {
       isLogin: state.rootAuth.isAuth
     };

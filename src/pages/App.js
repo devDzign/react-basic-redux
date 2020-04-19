@@ -15,17 +15,17 @@ function App() {
         <Header/>
 
         <Switch>
+
             <Route exact path="/">
                 <Home/>
             </Route>
 
-            <Route exact path="/ressources">
-                {RequiredAuthentication(Resources)}
-            </Route>
+            <Route exact path="/resources" component={RequiredAuthentication(Resources)} />
 
             <Route path="*">
                 <Error/>
             </Route>
+
         </Switch>
     </Router>
   );
