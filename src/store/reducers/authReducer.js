@@ -8,7 +8,7 @@ const authReducer = (state= initialState , action) => {
     console.log("action :", action.type)
     if (action.type === actionTypes.SET_AUTHENTICATION) {
         console.log('Reducers :', action)
-        return action.isAuth
+        return {...state, isAuth: action.isLoggedIn}
     } else {
         return state;
     }

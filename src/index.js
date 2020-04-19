@@ -20,10 +20,10 @@ import App from './pages/App';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 
-const middleware = [thunk, composeEnhancers]
+const middlewares = [thunk]
 const store = createStore(rootReducer,
     composeWithDevTools(
-        applyMiddleware(...middleware),
+        applyMiddleware(...middlewares),
         // composeEnhancers
     ));
 

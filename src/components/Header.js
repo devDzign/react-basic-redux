@@ -1,7 +1,14 @@
 import React from 'react';
-import logo from "../assets/logo.svg"
+import {connect} from "react-redux";
+import { authenticationToggle } from "../store/actions/actionTypes"
 
-const Header = () => {
+const Header = (props) => {
+    const {isLogin } =  props
+
+    const authenticationHandler = () => {
+        props.authenticationToggle(!isLogin);
+    }
+
     return (
         <header>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -30,7 +37,7 @@ const Header = () => {
                         </li>
 
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Connexion</a>
+                            {isLogin ?   <a className="nav-link" href="#" onClick={authenticationHandler}>Connexion</a> :  <a className="nav-link" href="#" onClick={authenticationHandler}>Déconnexion</a>}
                         </li>
 
                     </ul>
@@ -41,4 +48,20 @@ const Header = () => {
     );
 };
 
-export default Header;
+const  mapDispatchToProps = (dispatch) => {
+    return {
+        authenticationToggle: (isLogin) => dispatch(authenticationToggle(isLogin)),
+    }
+}
+
+const mapStateToProps = (state)=> {
+    console.log(state)
+    return {
+      isLogin: state.rootAuth.isAuth
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps )(Header)
+
+
+
