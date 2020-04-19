@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from "react-redux";
 import { authenticationToggle } from "../store/actions/actionTypes"
+import {Link} from "react-router-dom";
 
 const Header = (props) => {
     const {isLogin } =  props
@@ -29,11 +30,15 @@ const Header = (props) => {
                     <ul className="navbar-nav mr-auto">
 
                         <li className="nav-item active">
-                            <a className="nav-link" href="#">Accuiel <span className="sr-only">(current)</span></a>
+                            <Link className="nav-link" to="/">
+                                Accuiel
+                            </Link>
                         </li>
 
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Ressources</a>
+                            <Link className="nav-link" to="/ressources">
+                                Ressources
+                            </Link>
                         </li>
 
                         <li className="nav-item">
