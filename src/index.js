@@ -9,32 +9,20 @@ import {Provider} from "react-redux" ;
 import {composeWithDevTools} from 'redux-devtools-extension';
 import rootReducer from "./store/reducers/rootReducer" ;
 
-
 // My middleware
 import { actionCounter } from "./middleware/action-counter";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
-
 import App from './pages/App';
 
 
+const middlewares = [thunk, actionCounter];
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-
-const middlewares = [thunk, actionCounter]
 const store = createStore(rootReducer,
     composeWithDevTools(
-        applyMiddleware(...middlewares),
-        // composeEnhancers
+        applyMiddleware(...middlewares)
     ));
-
-// const store = createStoreWithMiddleware(
-//     rootReducer,
-//     window.__REDUX_DEVTOOLS_EXTENSION__ &&
-//     window.__REDUX_DEVTOOLS_EXTENSION__()
-// )
 
 
 ReactDOM.render(
@@ -42,10 +30,7 @@ ReactDOM.render(
         <Provider
             store={store}
         >
-
                 <App/>
-
-
         </Provider>
 
     </React.StrictMode>,

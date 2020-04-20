@@ -6,9 +6,6 @@ import {Link} from "react-router-dom";
 const Header = (props) => {
     const {isLogin } =  props
 
-    const authenticationHandler = () => {
-        props.authenticationToggle(!isLogin);
-    }
 
     return (
         <header>
@@ -35,14 +32,18 @@ const Header = (props) => {
                             </Link>
                         </li>
 
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/resources">
-                                Resources
-                            </Link>
-                        </li>
+
+                        {isLogin &&  (
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/resources">
+                                    Resources
+                                </Link>
+                            </li>
+                        )}
+
 
                         <li className="nav-item">
-                            {isLogin ?   <a className="nav-link" href="#" onClick={authenticationHandler}>Connexion</a> :  <a className="nav-link" href="#" onClick={authenticationHandler}>Déconnexion</a>}
+                            {isLogin ?   <a className="nav-link" href="#">Déconnexion</a> :  <Link className="nav-link" to="/connexion">Connexion</Link> }
                         </li>
 
                     </ul>

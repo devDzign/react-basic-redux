@@ -8,6 +8,7 @@ import Home from "../components/Home";
 import Error from "../components/Error";
 import Resources from "../components/Resources";
 import RequiredAuthentication from "../helpers/requireAuthentification"
+import Signin from "./Signin";
 
 function App() {
   return (
@@ -18,6 +19,10 @@ function App() {
 
             <Route exact path="/">
                 <Home/>
+            </Route>
+
+            <Route exact path="/connexion">
+                <Signin/>
             </Route>
 
             <Route exact path="/resources" component={RequiredAuthentication(Resources)} />
