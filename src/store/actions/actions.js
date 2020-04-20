@@ -9,6 +9,15 @@ export const setAuthentication = (isLoggedIn) => {
     }
 }
 
+export const incrementCounter = () => {
+    return (dispatch) => {
+        dispatch({
+            type: actionType.INCREMENT_ACTION_COUNT,
+           payload: {}
+        })
+    }
+}
+
 
 
 

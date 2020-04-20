@@ -10,6 +10,9 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 import rootReducer from "./store/reducers/rootReducer" ;
 
 
+// My middleware
+import { actionCounter } from "./middleware/action-counter";
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 
@@ -20,7 +23,7 @@ import App from './pages/App';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 
-const middlewares = [thunk]
+const middlewares = [thunk, actionCounter]
 const store = createStore(rootReducer,
     composeWithDevTools(
         applyMiddleware(...middlewares),
